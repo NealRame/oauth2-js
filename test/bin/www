@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var debug = require('debug')('app');
+var app = require('../app');
+
+var address = {
+    port: process.env.PORT || 3000,
+    host: process.env.ADDRESS || '0.0.0.0'
+};
+
+app.listen(
+    address.port,
+    address.host,
+    function() {
+        debug('Listening on ' + address.host + ':' + address.port);
+    }
+);

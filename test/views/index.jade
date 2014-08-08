@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+
+    if loggedIn
+        p You are logged as #{user.name.first} #{user.name.last}.
+    else
+        p You are not logged.
