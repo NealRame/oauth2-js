@@ -18,9 +18,11 @@ Example
 -------
 
 Rename the two files as following,
+
  - `test/oauth2.json.tmpl` as `test/oauth2.json`
  - `test/users.json.tmpl` as `test/users.json`
-Edit with your settings, Then:
+
+Edit with your settings, then:
 
 ```sh
 shell ~> npm test
