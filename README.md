@@ -9,7 +9,7 @@ Install
 -------
 
 ```sh
-shell ~> npm intall --save git+http://
+shell ~> npm intall --save git+https://github.com/NealRame/oauth2-js.git
 ```
 
 
