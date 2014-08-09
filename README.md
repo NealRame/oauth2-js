@@ -85,9 +85,9 @@ At least the given config must be provided to the OAuth2 constructor.
 
 ```javascript
 var oauth2_params = {
-    client_id: "GOOGLE_OAUTH2_CLIENT_ID",
-    client_secret: "GOOGLE_OAUTH2_CLIENT_SECRET",
-    redirect_uri: "OAUTH_REDIRECT_URI"
+    client_id: "YOUR_GOOGLE_OAUTH2_CLIENT_ID",
+    client_secret: "YOUR_GOOGLE_OAUTH2_CLIENT_SECRET",
+    redirect_uri: "http://local.host/path/to/your/callback"
 };
 ```
 
