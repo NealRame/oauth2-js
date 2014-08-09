@@ -90,19 +90,83 @@ app.use(oauth2.route());
 
 
 ---
-User model Helpers
-------------------
+`OAuth2` Object.
+----------------
 
-### `find_user(id, callback)`
 
-Asynchronously associate an instance of your _User_ _model_ to a given
-_Open ID_ [_token_id_](http://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+### Constructor
 
 _Parameters_:
 
+* `params` _Required_
+
+  A hash that contains the following attributes.
+  See [Google Developers Console](https://console.developers.google.com/)
+  to get them.
+
+  - `client_id` _Required_
+    The client id value.
+
+  - `client_secret` _Required_
+    The client secret value.
+
+  - `redirect_uri` _Required_
+    The redirect uri value.
+
+* `helpers` _Required_
+
+  A hash object containing three functions helpers.
+
+  - `find_user` _Required_
+    See [`find_user`]() for more details.
+
+  - `is_initialized` _Required_
+    See [`is_initialized`]() for more details.
+
+  - `map_oauth2_user_info` _Required_
+    See [`map_oauth2_user_info`]() for more details.
+
+
+### Methods
+
+#### `middleware()`
+Returns an express-js middleware. The middleware will provide locals
+variables to views througth the response object:
+* `loggedIn`, a flag indicating if the client is logged or not
+* `user`, instance of _User_ _model_ matching the current session.
+
+#### `route()`
+Returns an express-js router. The router will handle three distinct
+endpoints:
+
+* `PREFIX/login`
+* `PREFIX/logout`
+* `PREFIX/callback`
+
+The value of `PREFIX` is determined accordingly to the value your provide
+for the `redirect_uri` endpoint.
+Suppose you provide `'http://test.oauth2-js.io/auth/oauth2_callback'`, then
+`PREFIX` will be equal to `'auth'`.
+
+
+### Helpers
+
+You have to provide three helpers when your want to construct a `OAuth2`
+object:
+* [`find_user`](#)
+* [`is_initialized`](#)
+* [`map_oauth2_user_info`](#)
+
+#### `find_user(id, callback)`
+Asynchronously associate an instance of your _User_ _model_ to a given
+_Open ID_
+[_token_id_](http://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+
+_Parameters_:
 * `token_id`,
-  An _Open ID token_id_. According to how you have configured your
-  authentication request scope parameter, this is a possible token value:
+  An _Open ID token_id_. According to how you have
+  configured your authentication request scope parameter, this is a
+  possible token value:
     ```javascript
     id_token: {
         iss: 'URL',           // REQUIRED
@@ -114,57 +178,48 @@ _Parameters_:
     ```
 
 * `callback`,
+  A  completion callback respecting the nodejs completion callback
+  pattern.
+  - The first argument is always reserved for an exception.
+    If the operation was completed successfully, then the first
+    argument will be `null` or `undefined`.
+  - The second parameter is an instance of your _User_ _model_
 
-  A  completion callback respecting the nodejs completion callback pattern.
-
-  - The first argument is always reserved for an exception. If the operation
-  was completed successfully, then the first argument will be `null` or
-  `undefined`.
-
-  - The second parameter is an instance of your _User_ _model_.
-
-
-### `is_initialized(user)`
-
-Unsynchronously check if the given user is considered _initialized_ regarding
-to your _User_ _model_ state.
+#### `is_initialized(user)`
+Unsynchronously check if the given user is considered _initialized_
+regarding to your _User_ _model_ state.
 
 _Parameters_:
-
-* `user`
+* `user`,
   An instance of your _User_ _model_.
 
-* `callback`
-  A  completion callback respecting the nodejs completion callback pattern.
+* `callback`,
+  A  completion callback respecting the nodejs completion callback
+  pattern.
+  - The first argument is always reserved for an exception.
+    If the operation was completed successfully, then the first
+    argument will be `null` or `undefined`.
+  - The second parameter of the callback is a boolean value, set to
+    `true` if and only if the user is considered initialized.
 
-  - The first argument is always reserved for an exception. If the operation
-  was completed successfully, then the first argument will be `null` or
-  `undefined`.
-
-  - The second parameter of the callback is a boolean value, set to `true` if
-  and only if the user is considered initialized.
-
-  - The third parameter is the passed instance of your _User_ _model_.
-
-
-### `map_oauth2_user_info(oauth2_user_info, callback)`
-
-Asynchronously map the _ Open ID_ [_UserInfo_](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo)
+#### `map_oauth2_user_info(oauth2_user_info, callback)`
+Unsynchronously map the _ Open ID_
+[_UserInfo_](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo)
 attributes on the given instance of your _User_ _model_.
 
 _Parameters_:
-
-* `user`
-  An instance of your _User_ _model_.
+* `params`
+  A hash object containing the following attributes:
+  - `token`, see `find_user()` above for more details,
+  - `user`, an instance of your _User_ _model_.
 
 * `oauth2_user_info`
   A _UserInfo_ object.
 
 * `callback`
-  A  completion callback respecting the nodejs completion callbacks pattern.
-
-  - The first argument is always reserved for an exception. If the operation
-  was completed successfully, then the first argument will be `null` or
-  `undefined`.
-
-  - The second parameter is the passed instance of your _User_ _model_.
+  A  completion callback respecting the nodejs completion callbacks
+  pattern.
+  - The first argument is always reserved for an exception.
+    If the operation was completed successfully, then the first
+    argument will be `null` or `undefined`.
+  - The third parameter is the passed instance of your _User_ _model_.
