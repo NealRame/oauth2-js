@@ -34,7 +34,7 @@ Then, set `test/oauth2.json` with your settings. You must provide at least:
 {
     "client_id": "YOUR_GOOGLE_OAUTH2_CLIENT_ID",
     "client_secret": "YOUR_GOOGLE_OAUTH2_CLIENT_SECRET",
-    "redirect_uri": "http://LOCAL.HOST/PATH/TO/YOUR/CALLBACK"
+    "redirect_uri": "http://local.host/path/to/your/callback"
 }
 ```
 
@@ -52,8 +52,10 @@ Finally,
 shell ~> npm test
 ```
 
-Go to 'http://LOCAL.HOST/PATH/TO/YOUR/login' an try to login. You can logout
-visiting 'http://LOCAL.HOST/PATH/TO/YOUR/logout'.
+Got to:
+
+* http://local.host/path/to/your/login to login.
+* http://local.host/path/to/your/logout to logout.
 
 
 ---
