@@ -17,16 +17,43 @@ shell ~> npm intall --save git+https://github.com/NealRame/oauth2-js.git
 Example
 -------
 
-Rename the two files as following,
+Rename the two template files as following,
 
- - `test/oauth2.json.tmpl` as `test/oauth2.json`
- - `test/users.json.tmpl` as `test/users.json`
+```sh
+shell ~> cp test/oauth2.json.tmpl test/oauth2.json
+shell ~> cp test/users.json.tmpl test/users.json
+```
 
-Edit with your settings, then:
+Then, set `test/oauth2.json` with your settings. You must provide at least:
+
+* `client_id`,
+* `client_secret`,
+* `redirect_uri`
+
+```json
+{
+    "client_id": "YOUR_GOOGLE_OAUTH2_CLIENT_ID",
+    "client_secret": "YOUR_GOOGLE_OAUTH2_CLIENT_SECRET",
+    "redirect_uri": "http://LOCAL.HOST/PATH/TO/YOUR/CALLBACK"
+}
+```
+
+Then, set up your _"users databases"_, like the following:
+
+```json
+{
+    "PUT_A_USER_ID_HERE": {"_id": "PUT_A_USER_ID_HERE", "initialized": false},
+}
+```
+
+Finally,
 
 ```sh
 shell ~> npm test
 ```
+
+Go to 'http://LOCAL.HOST/PATH/TO/YOUR/login' an try to login. You can logout
+visiting 'http://LOCAL.HOST/PATH/TO/YOUR/logout'.
 
 
 ---
