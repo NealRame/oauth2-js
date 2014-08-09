@@ -54,18 +54,15 @@ var oauth2_helpers = {
     ///     argument will be `null` or `undefined`.
     ///   - The second parameter is an instance of your _User_ _model_
     find_user: function(id, callback) {
-        callback(null, users[id_token.sub]);
+        callback(null, users[id]);
     },
     /// ### `is_initialized(user)`
     /// Unsynchronously check if the given user is considered _initialized_
     /// regarding to your _User_ _model_ state.
     ///
     /// _Parameters_:
-    /// * `id`,
-    ///   A token_id
-    ///   A hash object containing the following attributes:
-    ///   - **`token`**, see `find_user()` above for more details,
-    ///   - `user`, an instance of your _User_ _model_.
+    /// * `user`,
+    ///   An instance of your _User_ _model_.
     ///
     /// * `callback`,
     ///   A  completion callback respecting the nodejs completion callback
@@ -75,9 +72,8 @@ var oauth2_helpers = {
     ///     argument will be `null` or `undefined`.
     ///   - The second parameter of the callback is a boolean value, set to
     ///     `true` if and only if the user is considered initialized.
-    ///   - The third parameter is the passed instance of your _User_ _model_.
     is_initialized: function(user, callback) {
-        callback(null, user.initialized, user);
+        callback(null, user.initialized);
     },
     /// ### `map_oauth2_user_info(oauth2_user_info, callback)`
     /// Unsynchronously map the _ Open ID_ [_UserInfo_](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo)
@@ -100,6 +96,8 @@ var oauth2_helpers = {
     ///     argument will be `null` or `undefined`.
     ///   - The third parameter is the passed instance of your _User_ _model_.
     map_oauth2_user_info: function(user, oauth2_user_info, callback) {
+        console.log(user);
+        console.log(oauth2_user_info);
         user.name = {
             first: oauth2_user_info.given_name,
             last: oauth2_user_info.family_name
