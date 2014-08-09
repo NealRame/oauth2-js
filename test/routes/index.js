@@ -6,7 +6,7 @@ var inspect = require('util').inspect;
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    res.render('index', {title: 'NΞalRame'});
+    res.render('index', {title: 'Auth2-JS Test'});
 });
 
 module.exports = router;
