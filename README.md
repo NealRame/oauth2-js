@@ -9,7 +9,7 @@ Install
 -------
 
 ```sh
-shell ~> npm intall --save git+http://
+shell ~> npm intall --save git+https://github.com/NealRame/oauth2-js.git
 ```
 
 
@@ -18,9 +18,11 @@ Example
 -------
 
 Rename the two files as following,
+
  - `test/oauth2.json.tmpl` as `test/oauth2.json`
  - `test/users.json.tmpl` as `test/users.json`
-Edit with your settings, Then:
+
+Edit with your settings, then:
 
 ```sh
 shell ~> npm test
@@ -146,7 +148,8 @@ _Parameters_:
 
   A hash object containing the following attributes:
 
-  - `token`, see `find_user()` above for more details,
+  - `token`, see [`find_user()`](https://github.com/NealRame/oauth2-js#find_userid-callback)
+    above for more details,
   - `user`, an instance of your _User_ _model_.
 
 
