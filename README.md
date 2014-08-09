@@ -148,7 +148,8 @@ _Parameters_:
 
   A hash object containing the following attributes:
 
-  - `token`, see `find_user()` above for more details,
+  - `token`, see [`find_user()`](https://github.com/NealRame/oauth2-js#find_userid-callback)
+    above for more details,
   - `user`, an instance of your _User_ _model_.
 
 
