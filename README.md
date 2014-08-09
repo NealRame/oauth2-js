@@ -127,32 +127,32 @@ app.use(oauth2.route());
 
 _Parameters_:
 
-* `params`, _Required_.
+* `params` _Required_.
 
   A hash that contains the following attributes.
   See [Google Developers Console](https://console.developers.google.com/)
   to get them.
 
-  - `client_id`, _Required_.
+  - `client_id` _Required_.
     The client id value.
 
-  - `client_secret`, _Required_.
+  - `client_secret` _Required_.
     The client secret value.
 
-  - `redirect_uri`, _Required_.
+  - `redirect_uri` _Required_.
     The redirect uri value.
 
-* `helpers`, _Required_.
+* `helpers` _Required_.
 
   A hash object containing three functions helpers.
 
-  - `find_user`, _Required_.
+  - `find_user` _Required_.
     See [`find_user`](#find_userid-callback) for more details.
 
-  - `is_initialized`, _Required_.
+  - `is_initialized` _Required_.
     See [`is_initialized`](#is_initializeduser) for more details.
 
-  - `map_oauth2_user_info`, _Required_.
+  - `map_oauth2_user_info` _Required_.
     See [`map_oauth2_user_info`](#map_oauth2_user_infooauth2_user_info-callback)
     for more details.
 
@@ -220,10 +220,10 @@ Unsynchronously check if the given user is considered _initialized_
 regarding to your _User_ _model_ state.
 
 _Parameters_:
-* `user`,
+* `user`
   An instance of your _User_ _model_.
 
-* `callback`,
+* `callback`
   A  completion callback respecting the nodejs completion callback
   pattern.
   - The first argument is always reserved for an exception.
@@ -240,6 +240,7 @@ attributes on the given instance of your _User_ _model_.
 _Parameters_:
 * `params`
   A hash object containing the following attributes:
+  
   - `token`, see `find_user()` above for more details,
   - `user`, an instance of your _User_ _model_.
 
@@ -247,7 +248,8 @@ _Parameters_:
   A _UserInfo_ object.
 
 * `callback`
-  A  completion callback respecting the nodejs completion callbacks
+  
+  A completion callback respecting the nodejs completion callbacks
   pattern.
   - The first argument is always reserved for an exception.
     If the operation was completed successfully, then the first
