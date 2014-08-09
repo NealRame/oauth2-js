@@ -6,5 +6,6 @@ block content
 
     if loggedIn
         p You are logged as #{user.name.first} #{user.name.last}.
+        img(src=user.picture)
     else
         p You are not logged.
