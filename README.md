@@ -96,7 +96,7 @@ var oauth2_helpers = {
     is_initialized: function(params, callback) {
         // Your implementation code here
     },
-    map_oauth2_user_info: function(params, oauth2_user_info, callback) {
+    map_user: function(params, oauth2_user_info, callback) {
         // Your implementation code here
     }
 };
