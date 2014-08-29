@@ -33,7 +33,7 @@ var oauth2_helpers = {
     is_initialized: function(user, callback) {
         callback(null, user.initialized);
     },
-    map_oauth2_user_info: function(user, oauth2_user_info, callback) {
+    map_user: function(user, oauth2_user_info, callback) {
         console.log(user);
         console.log(oauth2_user_info);
         user.name = {
