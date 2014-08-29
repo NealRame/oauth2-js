@@ -4,18 +4,14 @@ OAuth2-JS
 Express-js middleware to login using Google accounts.
 
 
----
-Install
--------
+## Install
 
 ```sh
 shell ~> npm intall --save git+https://github.com/NealRame/oauth2-js.git
 ```
 
 
----
-Example
--------
+## Example
 
 Rename the two template files as following,
 
@@ -58,9 +54,7 @@ Got to:
 * http://local.host/path/to/your/logout to logout.
 
 
----
-Setup
------
+## Setup
 
 ```javascript
 var bodyParser = require('body-parser');
@@ -102,7 +96,7 @@ var oauth2_helpers = {
     is_initialized: function(params, callback) {
         // Your implementation code here
     },
-    map_oauth2_user_info: function(params, oauth2_user_info, callback) {
+    map_user: function(params, oauth2_user_info, callback) {
         // Your implementation code here
     }
 };
@@ -118,42 +112,39 @@ app.use(oauth2.route());
 ```
 
 
----
-`OAuth2` Object.
-----------------
-
+## `OAuth2` Object.
 
 ### Constructor
 
 _Parameters_:
 
-* `params` _Required_.
+* `params`, _Required_.
 
   A hash that contains the following attributes.
   See [Google Developers Console](https://console.developers.google.com/)
   to get them.
 
-  - `client_id` _Required_.
+  - `client_id`, _Required_.
     The client id value.
 
-  - `client_secret` _Required_.
+  - `client_secret`, _Required_.
     The client secret value.
 
-  - `redirect_uri` _Required_.
+  - `redirect_uri`, _Required_.
     The redirect uri value.
 
-* `helpers` _Required_.
+* `helpers`, _Required_.
 
   A hash object containing three functions helpers.
 
-  - `find_user` _Required_.
+  - `find_user`, _Required_.
     See [`find_user`](#find_userid-callback) for more details.
 
-  - `is_initialized` _Required_.
+  - `is_initialized`, _Required_.
     See [`is_initialized`](#is_initializeduser) for more details.
 
-  - `map_oauth2_user_info` _Required_.
-    See [`map_oauth2_user_info`](#map_oauth2_user_infooauth2_user_info-callback)
+  - `map_user`, _Required_.
+    See [`map_user`](#map_useroauth2_user_info-callback)
     for more details.
 
 
@@ -163,15 +154,17 @@ _Parameters_:
 Returns an express-js middleware. The middleware will provide locals
 variables to views througth the response object:
 * `loggedIn`, a flag indicating if the client is logged or not;
-* `user`, instance of _User_ _model_ matching the current session.
+* if the user is logged:
+  - `user`, instance of _User_ _model_ matching the current session.
+* if not:
+  - `loginLink`, a link leading to the login page.
 
 #### `route()`
-Returns an express-js router. The router will handle three distinct
+Returns an express-js router. The router will handle two distinct
 endpoints:
 
-* `PREFIX/login`,
 * `PREFIX/logout`,
-* `PREFIX/callback`.
+* `PREFIX/oauth2_callback`.
 
 The value of `PREFIX` is determined accordingly to the value you provide
 for the `redirect_uri` endpoint.
@@ -185,7 +178,7 @@ You have to provide three helpers when your want to construct a `OAuth2`
 object:
 * [`find_user`](#find_userid-callback),
 * [`is_initialized`](#is_initializeduser),
-* [`map_oauth2_user_info`](#map_oauth2_user_infooauth2_user_info-callback).
+* [`map_user`](#map_useroauth2_user_info-callback).
 
 #### `find_user(id, callback)`
 Asynchronously associate an instance of your _User_ _model_ to a given
@@ -216,14 +209,14 @@ _Parameters_:
   - The second parameter is an instance of your _User_ _model_
 
 #### `is_initialized(user)`
-Unsynchronously check if the given user is considered _initialized_
+Asynchronously check if the given user is considered _initialized_
 regarding to your _User_ _model_ state.
 
 _Parameters_:
-* `user`
+* `user`,
   An instance of your _User_ _model_.
 
-* `callback`
+* `callback`,
   A  completion callback respecting the nodejs completion callback
   pattern.
   - The first argument is always reserved for an exception.
@@ -232,15 +225,14 @@ _Parameters_:
   - The second parameter of the callback is a boolean value, set to
     `true` if and only if the user is considered initialized.
 
-#### `map_oauth2_user_info(oauth2_user_info, callback)`
-Unsynchronously map the _ Open ID_
+#### `map_user(oauth2_user_info, callback)`
+Asynchronously map the _ Open ID_
 [_UserInfo_](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo)
 attributes on the given instance of your _User_ _model_.
 
 _Parameters_:
 * `params`
   A hash object containing the following attributes:
-  
   - `token`, see `find_user()` above for more details,
   - `user`, an instance of your _User_ _model_.
 
@@ -248,8 +240,7 @@ _Parameters_:
   A _UserInfo_ object.
 
 * `callback`
-  
-  A completion callback respecting the nodejs completion callbacks
+  A  completion callback respecting the nodejs completion callbacks
   pattern.
   - The first argument is always reserved for an exception.
     If the operation was completed successfully, then the first
