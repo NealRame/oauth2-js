@@ -4,18 +4,14 @@ OAuth2-JS
 Express-js middleware to login using Google accounts.
 
 
----
-Install
--------
+## Install
 
 ```sh
 shell ~> npm intall --save git+https://github.com/NealRame/oauth2-js.git
 ```
 
 
----
-Example
--------
+## Example
 
 Rename the two template files as following,
 
@@ -58,9 +54,7 @@ Got to:
 * http://local.host/path/to/your/logout to logout.
 
 
----
-Setup
------
+## Setup
 
 ```javascript
 var bodyParser = require('body-parser');
@@ -118,15 +112,7 @@ app.use(oauth2.route());
 ```
 
 
----
-`OAuth2` Object.
-----------------
-
-
-
-`OAuth2` Object.
-----------------
-
+## `OAuth2` Object.
 
 ### Constructor
 
