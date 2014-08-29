@@ -144,7 +144,7 @@ _Parameters_:
     See [`is_initialized`](#is_initializeduser) for more details.
 
   - `map_user`, _Required_.
-    See [`map_user`](#map_oauth2_user_infooauth2_user_info-callback)
+    See [`map_user`](#map_useroauth2_user_info-callback)
     for more details.
 
 
@@ -178,7 +178,7 @@ You have to provide three helpers when your want to construct a `OAuth2`
 object:
 * [`find_user`](#find_userid-callback),
 * [`is_initialized`](#is_initializeduser),
-* [`map_user`](#map_oauth2_user_infooauth2_user_info-callback).
+* [`map_user`](#map_useroauth2_user_info-callback).
 
 #### `find_user(id, callback)`
 Asynchronously associate an instance of your _User_ _model_ to a given
