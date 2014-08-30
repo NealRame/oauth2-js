@@ -1,7 +1,6 @@
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var express = require('express');
-var favicon = require('static-favicon');
 var fs = require('fs');
 var logger = require('morgan');
 var OAuth2 = require('../lib/oauth2');
@@ -14,7 +13,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
