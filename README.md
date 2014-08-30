@@ -48,9 +48,9 @@ Finally,
 shell ~> npm test
 ```
 
-Got to:
+Go to:
 
-* http://local.host/path/to/your/login to login.
+* http://local.host to login.
 * http://local.host/path/to/your/logout to logout.
 
 
