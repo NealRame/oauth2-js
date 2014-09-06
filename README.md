@@ -90,13 +90,13 @@ _model_ and the Open ID user profile.
 
 ```javascript
 var oauth2_helpers = {
-    find_user: function(token, callback) {
+    findUser: function(token, callback) {
         // Your implementation code here
     },
-    is_initialized: function(params, callback) {
+    isInitialized: function(params, callback) {
         // Your implementation code here
     },
-    map_user: function(params, oauth2_user_info, callback) {
+    mapUser: function(params, oauth2_user_info, callback) {
         // Your implementation code here
     }
 };
@@ -137,14 +137,14 @@ _Parameters_:
 
   A hash object containing three functions helpers.
 
-  - `find_user`, _Required_.
-    See [`find_user`](#find_userid-callback) for more details.
+  - `findUser`, _Required_.
+    See [`findUser`](#find_userid-callback) for more details.
 
-  - `is_initialized`, _Required_.
-    See [`is_initialized`](#is_initializeduser) for more details.
+  - `isInitialized`, _Required_.
+    See [`isInitialized`](#is_initializeduser) for more details.
 
-  - `map_user`, _Required_.
-    See [`map_user`](#map_useroauth2_user_info-callback)
+  - `mapUser`, _Required_.
+    See [`mapUser`](#map_useroauth2_user_info-callback)
     for more details.
 
 
@@ -176,11 +176,11 @@ the `redirect_uri` then PREFIX will be equal to 'auth'.
 
 You have to provide three helpers when your want to construct a `OAuth2`
 object:
-* [`find_user`](#find_userid-callback),
-* [`is_initialized`](#is_initializeduser),
-* [`map_user`](#map_useroauth2_user_info-callback).
+* [`findUser`](#find_userid-callback),
+* [`isInitialized`](#is_initializeduser),
+* [`mapUser`](#map_useroauth2_user_info-callback).
 
-#### `find_user(id, callback)`
+#### `findUser(id, callback)`
 Asynchronously associate an instance of your _User_ _model_ to a given
 _Open ID_
 [_token_id_](http://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -208,7 +208,7 @@ _Parameters_:
     argument will be `null` or `undefined`.
   - The second parameter is an instance of your _User_ _model_
 
-#### `is_initialized(user)`
+#### `isInitialized(user)`
 Asynchronously check if the given user is considered _initialized_
 regarding to your _User_ _model_ state.
 
@@ -225,7 +225,7 @@ _Parameters_:
   - The second parameter of the callback is a boolean value, set to
     `true` if and only if the user is considered initialized.
 
-#### `map_user(oauth2_user_info, callback)`
+#### `mapUser(oauth2_user_info, callback)`
 Asynchronously map the _ Open ID_
 [_UserInfo_](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo)
 attributes on the given instance of your _User_ _model_.
@@ -233,7 +233,7 @@ attributes on the given instance of your _User_ _model_.
 _Parameters_:
 * `params`
   A hash object containing the following attributes:
-  - `token`, see `find_user()` above for more details,
+  - `token`, see `findUser()` above for more details,
   - `user`, an instance of your _User_ _model_.
 
 * `oauth2_user_info`
