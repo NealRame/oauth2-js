@@ -5,7 +5,7 @@
   "scripts": {
     "test": "DEBUG='app' node ./test/bin/www"
   },
-  "main": "lib/oauth2.js",
+  "main": "index.js",
   "dependencies": {
     "debug": "~0.7.4",
     "promise": "^5.0.0",

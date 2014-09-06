@@ -3,7 +3,7 @@ var cookieParser = require('cookie-parser');
 var express = require('express');
 var fs = require('fs');
 var logger = require('morgan');
-var OAuth2 = require('../lib/oauth2');
+var OAuth2 = require('../index');
 var path = require('path');
 var session = require('express-session');
 
