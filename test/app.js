@@ -25,13 +25,13 @@ var oauth2_params = JSON.parse(fs.readFileSync(path.join(__dirname, 'oauth2.json
 
 /// Define User helpers here.
 var oauth2_helpers = {
-    find_user: function(id, callback) {
+    findUser: function(id, callback) {
         callback(null, users[id]);
     },
-    is_initialized: function(user, callback) {
+    isInitialized: function(user, callback) {
         callback(null, user.initialized);
     },
-    map_user: function(user, oauth2_user_info, callback) {
+    mapUser: function(user, oauth2_user_info, callback) {
         console.log(user);
         console.log(oauth2_user_info);
         user.name = {
