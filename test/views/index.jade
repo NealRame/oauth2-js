@@ -7,7 +7,7 @@ block content
     if loggedIn
         p You are logged as #{user.name.first} #{user.name.last}.
         img(src=user.picture)
-        a(href='/auth/logout') Logout
+        a(href=logoutLink) Logout
     else
         p You are not logged.
         a(href=loginLink) Login
