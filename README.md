@@ -138,13 +138,13 @@ _Parameters_:
   A hash object containing three functions helpers.
 
   - `findUser`, _Required_.
-    See [`findUser`](#find_userid-callback) for more details.
+    See [`findUser`](#finduserid-callback) for more details.
 
   - `isInitialized`, _Required_.
-    See [`isInitialized`](#is_initializeduser) for more details.
+    See [`isInitialized`](#isinitializeduser) for more details.
 
   - `mapUser`, _Required_.
-    See [`mapUser`](#map_useroauth2_user_info-callback)
+    See [`mapUser`](#mapuseroauth2_user_info-callback)
     for more details.
 
 
@@ -176,9 +176,9 @@ the `redirect_uri` then PREFIX will be equal to 'auth'.
 
 You have to provide three helpers when your want to construct a `OAuth2`
 object:
-* [`findUser`](#find_userid-callback),
-* [`isInitialized`](#is_initializeduser),
-* [`mapUser`](#map_useroauth2_user_info-callback).
+* [`findUser`](#finduserid-callback),
+* [`isInitialized`](#isinitializeduser),
+* [`mapUser`](#mapuseroauth2_user_info-callback).
 
 #### `findUser(id, callback)`
 Asynchronously associate an instance of your _User_ _model_ to a given
