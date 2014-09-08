@@ -1,11 +1,13 @@
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var debug = require('debug')('oauth2:helpers');
 var express = require('express');
 var fs = require('fs');
 var logger = require('morgan');
 var OAuth2 = require('../index');
 var path = require('path');
 var session = require('express-session');
+var util = require('util');
 
 var app = express();
 
@@ -15,7 +17,7 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(session({secret: 'IL0veK4t', proxy: true, resave: true, saveUninitialized: true}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -26,14 +28,15 @@ var oauth2_params = JSON.parse(fs.readFileSync(path.join(__dirname, 'oauth2.json
 /// Define User helpers here.
 var oauth2_helpers = {
     findUser: function(id, callback) {
+        debug('findUser(' + id + ')');
         callback(null, users[id]);
     },
     isInitialized: function(user, callback) {
+        debug('isInitialized(' + util.inspect(user) + ')');
         callback(null, user.initialized);
     },
     mapUser: function(user, oauth2_user_info, callback) {
-        console.log(user);
-        console.log(oauth2_user_info);
+        debug('mapUser(' + util.inspect(oauth2_user_info) + ')');
         user.name = {
             first: oauth2_user_info.given_name,
             last: oauth2_user_info.family_name
