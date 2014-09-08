@@ -156,6 +156,7 @@ variables to views througth the response object:
 * `loggedIn`, a flag indicating if the client is logged or not;
 * if the user is logged:
   - `user`, instance of _User_ _model_ matching the current session.
+  - `logoutLink`, logout link
 * if not:
   - `loginLink`, a link leading to the login page.
 
