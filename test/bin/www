@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-var debug = require('debug')('app');
+var debug = require('debug')('oauth2:test');
 var app = require('../app');
 
 var address = {
-    port: process.env.PORT || 3000,
-    host: process.env.ADDRESS || '0.0.0.0'
+    port: process.env.PORT || 3001,
+    host: process.env.ADDRESS || '127.0.0.1'
 };
 
 app.listen(
