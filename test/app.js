@@ -53,6 +53,7 @@ var oauth2 = new OAuth2(oauth2_params, oauth2_helpers);
 app.use(oauth2.middleware());
 app.use(oauth2.route());
 app.use('/', require('./routes/index'));
+app.use('/restricted', require('./routes/restricted'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

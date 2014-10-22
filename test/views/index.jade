@@ -2,12 +2,4 @@ extends layout
 
 block content
     h1= title
-    p Welcome to #{title}
-
-    if loggedIn
-        p You are logged as #{user.name.first} #{user.name.last}.
-        img(src=user.picture)
-        a(href=logoutLink) Logout
-    else
-        p You are not logged.
-        a(href=loginLink) Login
+    a(href="/restricted") go to the resctricted area !
