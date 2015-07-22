@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "private": true,
   "scripts": {
-    "test": "node ./test/bin/www"
+    "test": "DEBUG='oauth2:*' node ./test/bin/www"
   },
   "main": "index.js",
   "dependencies": {
