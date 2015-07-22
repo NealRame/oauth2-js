@@ -8,7 +8,6 @@
   "main": "index.js",
   "dependencies": {
     "debug": "^1.0.4",
-    "promise": "^5.0.0",
     "rsa-pem-from-mod-exp": "^0.8.4",
     "uid2": "0.0.3",
     "underscore": "^1.6.0"
