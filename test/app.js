@@ -31,11 +31,7 @@ var oauth2_helpers = {
         debug('findUser(' + id + ')');
         callback(null, users[id]);
     },
-    isInitialized: function(user, callback) {
-        debug('isInitialized(' + util.inspect(user) + ')');
-        callback(null, user.initialized);
-    },
-    mapUser: function(user, oauth2_user_info, callback) {
+    initUser: function(user, oauth2_user_info, callback) {
         debug('mapUser(' + util.inspect(oauth2_user_info) + ')');
         user.name = {
             first: oauth2_user_info.given_name,
@@ -43,8 +39,11 @@ var oauth2_helpers = {
         };
         user.email = oauth2_user_info.email;
         user.picture = oauth2_user_info.picture;
-
         callback(null, user);
+    },
+    isInitialized: function(user, callback) {
+        debug('isInitialized(' + util.inspect(user) + ')');
+        callback(null, user.initialized);
     }
 };
 
@@ -67,7 +66,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -78,7 +77,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
