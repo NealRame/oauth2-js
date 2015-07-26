@@ -31,8 +31,8 @@ var oauth2_helpers = {
         debug('find(' + id + ')');
         callback(null, users[id]);
     },
-    initUser: function(user, oauth2_user_info, callback) {
-        debug('mapUser(' + util.inspect(oauth2_user_info) + ')');
+    initialize: function(user, oauth2_user_info, callback) {
+        debug('initialize(' + util.inspect(oauth2_user_info) + ')');
         user.name = {
             first: oauth2_user_info.given_name,
             last: oauth2_user_info.family_name
