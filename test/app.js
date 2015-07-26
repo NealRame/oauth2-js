@@ -31,6 +31,9 @@ var oauth2_helpers = {
         debug('find(' + id + ')');
         callback(null, users[id]);
     },
+    id: function(user) {
+        return user._id; // eslint-disable-line no-underscore-dangle
+    },
     initialize: function(user, oauth2_user_info, callback) {
         debug('initialize(' + util.inspect(oauth2_user_info) + ')');
         user.name = {
@@ -44,9 +47,6 @@ var oauth2_helpers = {
     isInitialized: function(user, callback) {
         debug('isInitialized(' + util.inspect(user) + ')');
         callback(null, user.initialized);
-    },
-    id: function(user) {
-        return user._id; // eslint-disable-line no-underscore-dangle
     }
 };
 
