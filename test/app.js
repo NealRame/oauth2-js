@@ -44,6 +44,9 @@ var oauth2_helpers = {
     isInitialized: function(user, callback) {
         debug('isInitialized(' + util.inspect(user) + ')');
         callback(null, user.initialized);
+    },
+    id: function(user) {
+        return user._id; // eslint-disable-line no-underscore-dangle
     }
 };
 
