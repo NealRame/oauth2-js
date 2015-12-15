@@ -105,7 +105,7 @@ var oauth2_helpers = {
 };
 ```
 
-Then instanciate a OAuth2 middleware object like this:
+Then instantiate a OAuth2 middleware object like this:
 
 ```javascript
 var oauth2 = new OAuth2(oauth2_params, oauth2_helpers);
@@ -114,6 +114,17 @@ app.use(oauth2.middleware);
 app.use(oauth2.route);
 ```
 
+You can also listen to login events:
+
+```javascript
+oauth2.events
+    .on('login-success', function(user) {
+        console.log('LOGIN SUCCESS!', user);
+    })
+    .on('login-failure', function(id_token) {
+        console.log('LOGIN FAILURE!', id_token);
+    });
+```
 
 ## OAuth2 object.
 
@@ -145,7 +156,7 @@ the application users data.
 
 #### OAuth2#middleware
 An express-js middleware. The middleware will provide locals
-variables to views througth the response object:
+variables to views through the response object:
 * `loggedIn`, a flag indicating if the client is logged or not;
 * if the user is logged:
   - `user`, instance of _User_ _model_ matching the current session.
@@ -162,10 +173,16 @@ for the `redirect_uri` endpoint.
 Supposing you provide `'http://test.oauth2-js.io/auth/oauth2_callback'` as
 the `redirect_uri` then PREFIX will be equal to 'auth'.
 
+#### OAuth2#events
+On each succeeded or failed login, `OAuth2#events` object will emit an event.
+- `login-success` on each successful connection with the user logged in as
+parameter,
+- `login-failure` on each failed connection with the token as parameter.
+
 ### Delegates
 
 You have to provide four delegates when your want to construct a `OAuth2`
-object. Their are used to connect your appplication users logic with the
+object. Their are used to connect your application users logic with the
 oauth2 provider.
 - [`find`](#finduser_id-callback)
 - [`id`](#iduser)
