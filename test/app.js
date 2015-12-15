@@ -52,6 +52,16 @@ var oauth2_helpers = {
 
 var oauth2 = new OAuth2(oauth2_params, oauth2_helpers);
 
+oauth2.events
+    .on('login-success', function(user) {
+        debug('-- Login SUCCESS!');
+        debug(util.inspect(user));
+    })
+    .on('login-failure', function(token) {
+        debug('-- Login FAILURE!');
+        debug(util.inspect(token));
+    });
+
 app.use(oauth2.middleware);
 app.use(oauth2.route);
 app.use('/', require('./routes/index'));
