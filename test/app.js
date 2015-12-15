@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var debug = require('debug')('oauth2:helpers');
+var debug = require('debug')('oauth2:test');
 var express = require('express');
 var fs = require('fs');
 var logger = require('morgan');
