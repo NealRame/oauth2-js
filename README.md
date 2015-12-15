@@ -119,10 +119,10 @@ You can also listen to login events:
 ```javascript
 oauth2.events
     .on('login-success', function(user) {
-        console.log('LOGIN SUCCESS!', user);
+        // Your implementation code here
     })
     .on('login-failure', function(id_token) {
-        console.log('LOGIN FAILURE!', id_token);
+        // Your implementation code here
     });
 ```
 
